@@ -14,7 +14,7 @@ var PostitController = {
         console.log(data);
     });
 
-    response.write('porra CARALHO, FUNCIONA MERDA');
+    response.write('PORRA CARALHO, FUNCIONA MERDA');
 
   },
 

@@ -8,7 +8,7 @@ var PostitController = {
   listar: function(request,response){
 
     fs = require('fs');
-    fs.readFile('index.html', function(error, data){
+    fs.readFile('../view/index.html', function(error, data){
         response.write(data);
         response.end('puta que pariu');
         console.log(data);

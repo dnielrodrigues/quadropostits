@@ -9,7 +9,7 @@ var PostitController = {
 
     fs = require('fs');
     fs.readFile('index.html', function(error, data){
-        response.writeHeader(200, {'Content-Type': 'text/html'});
+        response.write(data);
         response.end('puta que pariu');
         console.log(data);
     });

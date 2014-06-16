@@ -76,7 +76,13 @@ var postitModel = {
 	    //FIM - EVENTO REMOVER
 	},
 
-	// var args = { idContainer : '', tagElementoPrincipal : '', idPrincipal : '', classBotaoRemover : ''}
+	/* ARGUMENTOS PARA A FUNÇÃO
+	var args = {
+		idContainer : '',
+		tagElementoPrincipal : '', 
+		idPrincipal : '', classBotaoRemover : ''
+	}
+	*/
 	novoPostit : function(args){
 		//AUTALIZA IDS
 	    this.atualizarIdsPostits({
@@ -98,7 +104,7 @@ var postitModel = {
 		novoElemento.id = "entrada-"+args.idPrincipal+"-"+novoId;
 		//limpa value do novo elemento
 		novoElemento.value = "";
-		//escreve o novo elemento
+		//escreve novo elemento
 		var novaDiv = document.createElement(args.tagElementoPrincipal);
 		novaDiv.id = args.idPrincipal+novoId;
 		novaDiv.className = "postit col-md-4";
@@ -134,13 +140,15 @@ var postitController = function (model){
 
 	//ADICIONAR POSTIT
 	var botaoAdicionarPostit = document.getElementById('adicionar-postit');
+	botaoAdicionarPostit.addEventListener("click", function(){
+		model.novoPostit({ 
+			idContainer : 'postits', 
+			tagElementoPrincipal : 'div', 
+			idPrincipal : 'postit', 
+			classBotaoRemover : 'btn'
+		})
+	}, true);
 
-	botaoAdicionarPostit.addEventListener("click", function(){model.novoPostit({ idContainer : 'postits', tagElementoPrincipal : 'div', idPrincipal : 'postit', classBotaoRemover : 'btn'})}, true);
-	
-	// criarRemovedorPostits('campos-Elemento-segunda-volta','button','div','Elemento-segunda-volta');
-
-	// var botaoAdicionarElemento = document.getElementById('adicionar-Elemento-segunda-volta');
-	// botaoAdicionarElemento.addEventListener("click", function(){novoPostit("campos-Elemento-segunda-volta","div","Elemento-segunda-volta","button")}, true);
 }
 
 postitController(postitModel);

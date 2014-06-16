@@ -2,71 +2,41 @@ module.exports = function(app) {
 
   var Usuario = app.models.usuario;
 
-  var ContatoController = {
+  var PostitController = {
 
-    index: function(req, res) {
+    criar: function(req, res) {
       var _id = req.session.usuario._id;
       Usuario.findById(_id, function(erro, usuario) {
-        var contatos = usuario.contatos;
-        var resultado = {contatos: contatos};
-        res.render('contatos/index', resultado);
-      });
-    },
-
-    create: function(req, res) {
-      var _id = req.session.usuario._id;
-      Usuario.findById(_id, function(erro, usuario) {
-        var contato = req.body.contato;
-        usuario.contatos.push(contato);
+        var postit = req.body.postit;
+        usuario.postits.push(postit);
         usuario.save(function() {
-          res.redirect('/contatos');
+          res.redirect('/postits');
         });
       });
     },
 
-    show: function(req, res) {
+    editar: function(req, res) {
       var _id = req.session.usuario._id;
       Usuario.findById(_id, function(erro, usuario) {
-        var contatoID = req.params.id;
-        var contato = usuario.contatos.id(contatoID);
-        var resultado = {contato: contato};
-        res.render('contatos/show', resultado);
+        var postitID = req.params.id;
+        var postit = usuario.postits.id(postitID);
+        var resultado = {postit: postit};
+        res.render('postits/edit', resultado);
       });
     },
 
-    edit: function(req, res) {
+    excluir: function(req, res) {
       var _id = req.session.usuario._id;
       Usuario.findById(_id, function(erro, usuario) {
-        var contatoID = req.params.id;
-        var contato = usuario.contatos.id(contatoID);
-        var resultado = {contato: contato};
-        res.render('contatos/edit', resultado);
-      });
-    },
-
-    update: function(req, res) {
-      var _id = req.session.usuario._id;
-      Usuario.findById(_id, function(erro, usuario) {
-        var contatoID = req.params.id;
-        var contato = usuario.contatos.id(contatoID);
-        contato.nome = req.body.contato.nome;
-        contato.email = req.body.contato.email;
+        var postitID = req.params.id;
+        usuario.postits.id(postitID).remove();
         usuario.save(function() {
-          res.redirect('/contatos');
-        });
-      });
-    },
-
-    destroy: function(req, res) {
-      var _id = req.session.usuario._id;
-      Usuario.findById(_id, function(erro, usuario) {
-        var contatoID = req.params.id;
-        usuario.contatos.id(contatoID).remove();
-        usuario.save(function() {
-          res.redirect('/contatos');
+          res.redirect('/postits');
         });
       });
     }
   }
-  return ContatoController;
+  
+  return PostitController;
+
 };

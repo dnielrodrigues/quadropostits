@@ -4,7 +4,7 @@ module.exports = function(app) {
 	var Schema = require('mongoose').Schema;
 
 	var postit = Schema({
-		tipo: {
+		tipo: {	//texto, imagem, arquivo
 			type: String,
 			required: true
 		},

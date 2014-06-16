@@ -1,11 +1,30 @@
 {
-  "name": "selecao-front-end",
+  "name": "quadropostits",
   "version": "0.0.0",
-  "description": "",
+  "description": "small project of test",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Daniel Rodrigues",
+  "license": "WTFPL",
+  "dependencies": {
+    "mongoose": "^3.8.12"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dnielrodrigues/quadropostits.git"
+  },
+  "keywords": [
+    "nodejs",
+    "js",
+    "angularjs",
+    "express",
+    "mongodb"
+  ],
+  "bugs": {
+    "url": "https://github.com/dnielrodrigues/quadropostits/issues"
+  },
+  "homepage": "https://github.com/dnielrodrigues/quadropostits"
 }
